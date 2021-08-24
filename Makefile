@@ -6,7 +6,7 @@
 #    By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 09:44:18 by ceduard2          #+#    #+#              #
-#    Updated: 2021/08/21 10:25:07 by ceduard2         ###   ########.fr        #
+#    Updated: 2021/08/23 09:41:42 by ceduard2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,32 +16,32 @@ CC	= clang
 
 CFLAGS	= -Wall -Wextra -Werror
 
-SRCS	= ft_isalpha.c\
-	ft_toupper.c\
-	ft_isdigit.c\
-	ft_tolower.c\
+SRCS	= ft_atoi.c\
+	ft_bzero.c\
 	ft_isalnum.c\
+	ft_isalpha.c\
 	ft_isascii.c\
-	ft_strchr.c\
+	ft_isdigit.c\
 	ft_isprint.c\
-	ft_strrchr.c\
+	ft_memchr.c\
+	ft_memcmp.c\
+	ft_memcpy.c\
+	ft_memmove.c\
+	ft_memset.c\
+	ft_strchr.c\
+	ft_strlcat.c\
+	ft_strlcpy.c\
 	ft_strlen.c\
 	ft_strncmp.c\
-	ft_memset.c\
-	ft_bzero.c\
-	ft_memchr.c\
-	ft_memcpy.c\
-	ft_memcmp.c\
-	ft_memmove.c\
 	ft_strnstr.c\
-	ft_strlcpy.c\
-	ft_strlcat.c\
-	ft_atoi.c\
+	ft_strrchr.c\
+	ft_tolower.c\
+	ft_toupper.c\
 
 OBJS = ${SRCS:.c=.o}
 
 ${NAME}: ${OBJS}
-	ar rc ${NAME} ${OBJS}
+	ar -rs ${NAME} ${OBJS}
 
 .PHONY: all clean fclean re
 
