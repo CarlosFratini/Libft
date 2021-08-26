@@ -6,7 +6,7 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 14:35:50 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/24 15:17:21 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:03:26 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	ft_isspace(int c);
 
-int	ft_atoi(const char *string)
+int	ft_atoi(const char *nptr)
 {
 	int	num;
 	int	sign;
 
 	num = 0;
 	sign = 1;
-	while (ft_isspace(*string))
+	while (ft_isspace(*nptr))
 	{
-		string++;
+		nptr++;
 	}
-	if (*string == '-')
+	if (*nptr == '-')
 		sign = -1;
-	if (*string == '-' || *string == '+')
-		string++;
-	while (*string >= '0' && *string <= '9')
+	if (*nptr == '-' || *nptr == '+')
+		nptr++;
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		num = num * 10 + *string++ - '0';
+		num = num * 10 + *nptr++ - '0';
 	}
 	return (num * sign);
 }

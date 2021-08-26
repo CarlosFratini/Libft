@@ -6,21 +6,21 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 17:16:56 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/23 17:29:18 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:05:43 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *block, int val, size_t size)
+void	*ft_memset(void *dst, int c, size_t len)
 {
 	unsigned char	*ptr;
 
-	ptr = block;
-	while (size > 0)
+	ptr = dst;
+	while (len > 0)
 	{
-		*ptr++ = val;
-		size--;
+		*ptr++ = c;
+		len--;
 	}
-	return (block);
+	return (dst);
 }
