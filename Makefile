@@ -6,7 +6,7 @@
 #    By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 09:44:18 by ceduard2          #+#    #+#              #
-#    Updated: 2021/08/24 21:05:03 by ceduard2         ###   ########.fr        #
+#    Updated: 2021/08/26 09:46:07 by ceduard2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,17 @@ SRCS	= ft_atoi.c\
 	ft_strrchr.c\
 	ft_tolower.c\
 	ft_toupper.c\
+	ft_substr.c\
+	ft_strjoin.c\
+	ft_strtrim.c\
+	ft_split.c\
+	ft_itoa.c\
+	ft_strmapi.c\
+	ft_striteri.c\
+	ft_putchar_fd.c\
+	ft_putstr_fd.c\
+	ft_putendl_fd.c\
+	ft_putnbr_fd.c\
 
 OBJS = ${SRCS:.c=.o}
 
