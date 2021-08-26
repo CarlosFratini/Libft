@@ -6,7 +6,7 @@
 #    By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 09:44:18 by ceduard2          #+#    #+#              #
-#    Updated: 2021/08/23 09:41:42 by ceduard2         ###   ########.fr        #
+#    Updated: 2021/08/24 21:05:03 by ceduard2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 SRCS	= ft_atoi.c\
 	ft_bzero.c\
+	ft_calloc.c\
 	ft_isalnum.c\
 	ft_isalpha.c\
 	ft_isascii.c\
@@ -29,6 +30,7 @@ SRCS	= ft_atoi.c\
 	ft_memmove.c\
 	ft_memset.c\
 	ft_strchr.c\
+	ft_strdup.c\
 	ft_strlcat.c\
 	ft_strlcpy.c\
 	ft_strlen.c\
