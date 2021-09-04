@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 11:10:02 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/31 12:44:37 by ceduard2         ###   ########.fr       */
+/*   Created: 2021/09/03 18:43:47 by ceduard2          #+#    #+#             */
+/*   Updated: 2021/09/03 19:26:11 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t len)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char		*d;
-	const char	*s;
+	char	*str;
 
-	d = (char *)dst;
-	s = (const char *)src;
-	if (d == NULL && s == NULL)
-		return (NULL);
-	while (len-- > 0)
-	{
-		*d++ = *s++;
-	}
-	return (dst);
+	str = ft_strjoin(s, "\n");
+	write (fd, str, ft_strlen(str));
 }
