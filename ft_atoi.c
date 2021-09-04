@@ -6,13 +6,16 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 14:35:50 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/25 19:03:26 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/04 13:41:10 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c);
+static int	ft_isspace(int c)
+{
+	return (c == ' ' || (c >= '\t' && c <= '\r'));
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -34,9 +37,4 @@ int	ft_atoi(const char *nptr)
 		num = num * 10 + *nptr++ - '0';
 	}
 	return (num * sign);
-}
-
-int	ft_isspace(int c)
-{
-	return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
