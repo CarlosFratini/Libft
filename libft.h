@@ -6,7 +6,7 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:38:01 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/26 09:50:51 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/03 18:40:51 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <unistd.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *b, size_t len);

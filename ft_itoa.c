@@ -6,56 +6,84 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 13:06:14 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/31 13:09:59 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/08 19:27:11 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static char	*ft_int_to_char(char *s, int n)
+static char	*ft_int_to_char(char *s, int n, size_t size)
 {
 	int	num;
 
+	num = n;
+	s[size] = '\0';
+	size--;
+	if (n < 0)
+	{
+		s[0] = '-';
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		s[size] = (n % 10) + '0';
+		n = n / 10;
+		size--;
+	}
+	return (s);
+}
+
+static char	*ft_zerormin(int n)
+{
+	char	*str;
+
+	if (n == 0)
+	{
+		str = (char *)malloc(sizeof(char) * 2);
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
+	}
+	else if (n == -2147483648)
+	{
+		str = (char *)malloc(sizeof(*str) * 12);
+		ft_strlcpy(str, "-2147483648", 12);
+		return (str);
+	}
+	return (NULL);
+}
+
+static size_t	ft_nsize(int n)
+{
+	size_t	size;
+
+	size = 0;
 	if (n < 0)
 	{
 		n = n * -1;
-		*s++ = '-';
+		size++;
 	}
-	num = n;
-	while (num > 0)
-	{
-		num = num / 10;
-		s++;
-	}
-	*s-- = '\0';
 	while (n > 0)
 	{
-		*s-- = (n % 10) + '0';
+		size++;
 		n = n / 10;
 	}
-	return (s);
+	return (size);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
-	char	*ptr;
+	size_t	size;
 
-	str = (char *)malloc(sizeof(char) * 12);
+	str = ft_zerormin(n);
+	if (str != NULL)
+		return (str);
+	size = ft_nsize(n);
+	str = (char *)malloc(sizeof(*str) * (size + 1));
 	if (str == NULL)
 		return (NULL);
-	if (n == 0)
-	{
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
-	if (n == -2147483648)
-	{
-		ft_strlcpy(str, "-2147483648", 12);
-		return (str);
-	}
-	ptr = str;
-	str = ft_int_to_char(str, n);
-	return (ptr);
+	str = ft_int_to_char(str, n, size);
+	return (str);
 }

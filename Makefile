@@ -6,7 +6,7 @@
 #    By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 09:44:18 by ceduard2          #+#    #+#              #
-#    Updated: 2021/08/26 09:46:07 by ceduard2         ###   ########.fr        #
+#    Updated: 2021/09/05 10:36:15 by ceduard2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,3 +81,11 @@ ${SRCS}:
 #BE SMART
 cclean:
 	rm -f ${SRCS}
+
+#THIS PART BELOW IS FOR UNIT TESTS
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
+
+sclean:
+	rm -rf libft.so

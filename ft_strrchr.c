@@ -6,7 +6,7 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 17:36:11 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/08/25 22:09:02 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/08 18:31:24 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*str;
-	int		slen;
+	int		len;
 
-	slen = ft_strlen(s);
-	str = (char *)s + slen;
-	while (slen-- >= 0)
+	len = ft_strlen(s);
+	if(len == 0)
+		return (NULL);
+	str = (char *)s + len;
+	while (len-- >= 0)
 	{
 		if (*str == c)
 			return (str);

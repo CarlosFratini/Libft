@@ -6,34 +6,72 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:58:13 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/03 18:24:32 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/08 22:38:05 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_split(char const *s, char c)
+static size_t	ft_numofchars(char const *s, char c)
 {
-	char *s1;
-	char *s2;
-	char **str;
-	size_t i;
-	size_t len;
+	size_t	count;
+	int		flag;
 
-	len = ft_strlen(s);
-	s1 = (char *)malloc(sizeof(char *) * len);
-	s2 = (char *)malloc(sizeof(char *) * len);
-	str = (char **)malloc(sizeof(char **) * len);
-	if(!s1 || !s2 || !str)
-		return NULL;
-	i = 0;
-	while (s[i] != c)
+	count = 0;
+	flag = 1;
+	while (*s)
 	{
-		i++;
+		if(*s != c && flag)
+		{
+			flag = 0;
+			count++;
+		}
+		else if (*s == c)
+			flag = 1;
+		s++;
 	}
-	s1 = ft_substr(s, 0, i - 1);
-	s2 = ft_substr(s, i, len);
-	str[0] = s1;
-	str[1] = s2;
-	return (str);
+	return (count);
+}
+
+static size_t	ft_check_next(const char *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (*s && (*s != c))
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ptr;
+	size_t	i;
+	size_t	len;
+	size_t num;
+
+	i = 0;
+	num = ft_numofchars (s, c);
+	ptr = (char **)malloc(sizeof(*ptr) * num + 1);
+	if (ptr == NULL)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			len = ft_check_next(s, c);
+			ptr[i] = (char *)malloc(sizeof(char) * (len + 1));
+			if (ptr[i] != NULL)
+				ft_strlcpy(ptr[i], s, len + 1);
+			s = s + len ;
+			i++;
+		}
+		else
+			s++;
+	}
+	ptr[num] = NULL;
+	return (ptr);
 }
