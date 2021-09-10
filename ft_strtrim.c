@@ -6,7 +6,7 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:21:36 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/08 20:43:39 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 14:39:08 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*ft_search_end(char *s1, const char *s2)
 
 	i = 0;
 	str = ft_strdup(s1);
-	if(str == NULL)
+	if (str == NULL)
 		return (NULL);
 	len = ft_strlen(str);
 	while (s2[i])
@@ -64,12 +64,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	if (!(*set))
 		return ((char *)s1);
 	if (!(*s1) && !(*set))
-		return (NULL);
+		return ("");
 	str = ft_search_start (s1, set);
-	if(str == NULL)
+	if (str == NULL)
 		return (NULL);
 	str = ft_search_end (str, set);
 	return (str);

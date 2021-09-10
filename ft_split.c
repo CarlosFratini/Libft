@@ -6,22 +6,22 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:58:13 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/08 22:38:05 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 14:40:15 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_numofchars(char const *s, char c)
+static int	ft_numofchars(char const *s, char c)
 {
-	size_t	count;
+	int		count;
 	int		flag;
 
 	count = 0;
 	flag = 1;
 	while (*s)
 	{
-		if(*s != c && flag)
+		if (*s != c && flag)
 		{
 			flag = 0;
 			count++;
@@ -33,9 +33,9 @@ static size_t	ft_numofchars(char const *s, char c)
 	return (count);
 }
 
-static size_t	ft_check_next(const char *s, char c)
+static int	ft_check_next(const char *s, char c)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	while (*s && (*s != c))
@@ -46,18 +46,12 @@ static size_t	ft_check_next(const char *s, char c)
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_strsplit(char **ptr, char const *s, char c)
 {
-	char	**ptr;
-	size_t	i;
-	size_t	len;
-	size_t num;
+	int	i;
+	int	len;
 
 	i = 0;
-	num = ft_numofchars (s, c);
-	ptr = (char **)malloc(sizeof(*ptr) * num + 1);
-	if (ptr == NULL)
-		return (NULL);
 	while (*s)
 	{
 		if (*s != c)
@@ -72,6 +66,21 @@ char	**ft_split(char const *s, char c)
 		else
 			s++;
 	}
+	return (ptr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ptr;
+	int		num;
+
+	if (s == NULL)
+		return (NULL);
+	num = ft_numofchars (s, c);
+	ptr = (char **)malloc(sizeof(*ptr) * (num + 1));
+	if (ptr == NULL)
+		return (NULL);
+	ptr = ft_strsplit(ptr, s, c);
 	ptr[num] = NULL;
 	return (ptr);
 }

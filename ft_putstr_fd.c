@@ -6,7 +6,7 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:42:13 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/03 18:43:04 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 14:39:33 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	write (fd, s, ft_strlen(s));
+	if (s != NULL)
+		write (fd, s, ft_strlen(s));
 }

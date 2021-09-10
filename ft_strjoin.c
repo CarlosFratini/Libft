@@ -6,7 +6,7 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 21:07:59 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/08 19:29:15 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 14:39:58 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	size1;
 	size_t	size2;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	size1 = ft_strlen(s1) + 1;
 	size2 = ft_strlen(s2) + 1;
 	str = malloc(sizeof(*str) * (size1 + size2));
