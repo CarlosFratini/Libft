@@ -6,12 +6,11 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 13:06:14 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/08 19:27:11 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:15:57 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_int_to_char(char *s, int n, size_t size)
 {

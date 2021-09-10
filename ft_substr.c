@@ -6,12 +6,11 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 11:34:07 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/10 14:27:38 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:17:48 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

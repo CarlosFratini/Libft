@@ -6,12 +6,11 @@
 /*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:21:36 by ceduard2          #+#    #+#             */
-/*   Updated: 2021/09/10 14:39:08 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:17:42 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_search_start(char const *s1, char const *s2)
 {
