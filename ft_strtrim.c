@@ -12,70 +12,55 @@
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+static int	ft_search_start(char const *s1, char const *set)
 {
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (set[i] != '\0')
+	{
+		if (s1[j] == set[i])
+		{
+			j++;
+			i = 0;
+			continue ;
+		}
+		i++;
+	}
+	return (j);
 }
 
-// static char	*ft_search_start(char const *s1, char const *s2)
-// {
-// 	char	*str;
-// 	size_t	i;
+static int	ft_search_end(char const *s1, char const *set)
+{
+	int		i;
+	int		j;
 
-// 	str = ft_strdup(s1);
-// 	if (str == NULL)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s2[i])
-// 	{
-// 		if (*str == s2[i])
-// 		{
-// 			ft_strlcpy (str, str + 1, ft_strlen(str));
-// 			i = 0;
-// 			continue ;
-// 		}
-// 		i++;
-// 	}
-// 	return (str);
-// }
+	i = 0;
+	j = (int)ft_strlen(s1);
+	while (set[i])
+	{
+		if (s1[j - 1] == set[i])
+		{
+			j--;
+			i = 0;
+			continue ;
+		}
+		i++;
+	}
+	return (j);
+}
 
-// static char	*ft_search_end(char *s1, const char *s2)
-// {
-// 	char	*str;
-// 	size_t	len;
-// 	size_t	i;
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*str;
+	int		s;
+	size_t	e;
 
-// 	i = 0;
-// 	str = ft_strdup(s1);
-// 	if (str == NULL)
-// 		return (NULL);
-// 	len = ft_strlen(str);
-// 	while (s2[i])
-// 	{
-// 		if (str[len - 1] == s2[i])
-// 		{
-// 			ft_strlcpy (str, str, len);
-// 			len = ft_strlen(str);
-// 			i = 0;
-// 			continue ;
-// 		}
-// 		i++;
-// 	}
-// 	return (str);
-// }
-
-// char	*ft_strtrim(char const *s1, char const *set)
-// {
-// 	char	*str;
-
-// 	if (s1 == NULL || set == NULL)
-// 		return (NULL);
-// 	if (!(*set))
-// 		return ((char *)s1);
-// 	if (!(*s1) && !(*set))
-// 		return ("");
-// 	str = ft_search_start (s1, set);
-// 	if (str == NULL)
-// 		return (NULL);
-// 	str = ft_search_end (str, set);
-// 	return (str);
-// }
+	s = 0;
+	s = ft_search_start(s1, set);
+	e = (size_t)ft_search_end(s1, set) - s;
+	str = ft_substr(s1, s, e);
+	return (str);
+}
