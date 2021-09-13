@@ -58,7 +58,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		s;
 	size_t	e;
 
-	s = 0;
+	if (!s1 || !set)
+		return (NULL);
 	s = ft_search_start(s1, set);
 	e = (size_t)ft_search_end(s1, set) - s;
 	str = ft_substr(s1, s, e);
