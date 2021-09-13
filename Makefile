@@ -6,7 +6,7 @@
 #    By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 09:44:18 by ceduard2          #+#    #+#              #
-#    Updated: 2021/09/05 10:36:15 by ceduard2         ###   ########.fr        #
+#    Updated: 2021/09/13 09:52:28 by ceduard2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,41 +51,60 @@ SRCS	= ft_atoi.c\
 	ft_putendl_fd.c\
 	ft_putnbr_fd.c\
 
-OBJS = ${SRCS:.c=.o}
+BONUS	= ft_lstnew.c\
+	ft_lstadd_front.c\
+	ft_lstsize.c\
+	ft_lstlast.c\
+	ft_lstadd_back.c\
+	ft_lstdelone.c\
+	ft_lstclear.c\
+	ft_lstiter.c\
+	ft_lstmap.c\
 
-${NAME}: ${OBJS}
-	ar -rs ${NAME} ${OBJS}
+OBJS = $(SRCS:.c=.o)
 
-.PHONY: all clean fclean re
+BOBJS = $(BONUS:.c=.o)
 
-all: ${NAME}
+$(NAME): $(OBJS) $(BOBJS)
+	ar -rs $(NAME) $(OBJS) $(BOBJS)
+
+all: $(NAME)
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
+
+bonus: $(BOBJS)
+	ar -rs $(NAME) $(BOBJS)
 
 clean:
-	rm -f ${OBJS}
+	rm -f $(OBJS) $(BOBJS)
 
 fclean:
-	rm -f ${NAME}
+	rm -f $(NAME)
+
+cleanall: clean fclean sclean
 
 re: clean fclean all
 
 #CALL THIS TO CREATE NEW C FILES. IT MIGHT OVERWRITE
 #EXISTING FILES, BE CAREFUL.
-ccreate: ${SRCS}
+ccreate: $(SRCS)
 
-${SRCS}:
+#CALL THIS TO CREATE BONUS C FILES
+bcreate: $(BONUS)
+
+$(BONUS):
 	touch $@
-#THIS WILL ERASE ALL C FILES, NO TURNNING BACK
-#BE SMART
-cclean:
-	rm -f ${SRCS}
+
+$(SRCS):
+	touch $@
+
+.PHONY: all clean fclean re
 
 #THIS PART BELOW IS FOR UNIT TESTS
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BOBJS)
 
 sclean:
 	rm -rf libft.so
